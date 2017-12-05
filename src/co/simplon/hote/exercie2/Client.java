@@ -27,11 +27,15 @@ public interface Client {
 	public String getPtiDej();
 	public void setPtiDej(String PtiDej);
 	
+	public String getSejour();
+	public void setSejour(String sejour);
+	
 	public String getNuit();
 	public void setNuit(String Nuit);
 	
 	public String getNbreDeVisiteur();
 	public void setNbreDeVisiteur(String nbreDeVisiteur);
+	
 
 	
 	

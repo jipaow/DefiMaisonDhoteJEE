@@ -40,6 +40,7 @@ public class Accueil extends HttpServlet {
 		String animal = request.getParameter("animal");
 		String fumeur = request.getParameter("fumeur");
 		String ptiDej = request.getParameter("ptiDej");
+		String sejour = request.getParameter("sejour");
 		String nuit = request.getParameter("nuit");
 		String nbreDeVisiteur = request.getParameter("nbreDeVisiteur");
 		
@@ -52,6 +53,7 @@ public class Accueil extends HttpServlet {
 		newClient.setAnimal(animal);
 		newClient.setFumeur(fumeur);
 		newClient.setPtiDej(ptiDej);
+		newClient.setSejour(sejour);
 		newClient.setNuit(nuit);
 		newClient.setNbreDeVisiteur(nbreDeVisiteur);
 		

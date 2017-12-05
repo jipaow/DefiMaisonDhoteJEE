@@ -11,6 +11,7 @@ public class ClientImpl implements Client {
 	String ptiDej;
 	String Nuit;
 	String nbreDeVisiteur;
+    String sejour;
 
 	@Override
 	public String getNom() {
@@ -112,6 +113,19 @@ public class ClientImpl implements Client {
 		// TODO Auto-generated method stub
 		this.ptiDej = ptiDej;
 
+	}
+
+	@Override
+	public String getSejour() {
+		// TODO Auto-generated method stub
+		return sejour;
+	}
+
+	@Override
+	public void setSejour(String sejour) {
+		// TODO Auto-generated method stub
+		this.sejour = sejour;
+		
 	}
 
 	@Override
