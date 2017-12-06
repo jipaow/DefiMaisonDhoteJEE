@@ -2,6 +2,8 @@ package co.simplon.hote.exercie2;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -57,6 +59,9 @@ public class Accueil extends HttpServlet {
 		newClient.setNuit(nuit);
 		newClient.setNbreDeVisiteur(nbreDeVisiteur);
 		
+		//List<Client> infoResa = new ArrayList<Client>();
+		//infoResa.add(newClient);
+		
 		
 		request.setAttribute("client", newClient);
 		getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
@@ -66,5 +71,8 @@ public class Accueil extends HttpServlet {
 		
 		doGet(request, response);
 	}
+
+
+	
 
 }

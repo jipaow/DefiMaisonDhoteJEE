@@ -1,7 +1,5 @@
 package co.simplon.hote.exercie2;
 
-import java.util.Date;
-
 public interface Client {
 	public String getNom();
 	public void setNom(String nom);
