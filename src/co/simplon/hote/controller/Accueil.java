@@ -1,4 +1,4 @@
-package co.simplon.hote.exercie2;
+package co.simplon.hote.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,6 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import co.simplon.hote.model.Client;
+import co.simplon.hote.model.ClientImpl;
+import co.simplon.hote.model.ReservationManager;
+
+
 
 
 
@@ -29,7 +35,10 @@ public class Accueil extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at:accueil ").append(request.getContextPath());
+      //request.setAttribute("infoResa", ReservationManager.getInstance().getInfoResa().get(0));
+       
+		
+//		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
 	}
 
 	
@@ -46,7 +55,7 @@ public class Accueil extends HttpServlet {
 		String nuit = request.getParameter("nuit");
 		String nbreDeVisiteur = request.getParameter("nbreDeVisiteur");
 		
-		Client newClient = new ClientImpl();
+		ClientImpl newClient = new ClientImpl();
 		newClient.setNom(nom);
 		newClient.setPrenom(prenom);
 		newClient.setEmail(mail);
@@ -59,8 +68,8 @@ public class Accueil extends HttpServlet {
 		newClient.setNuit(nuit);
 		newClient.setNbreDeVisiteur(nbreDeVisiteur);
 		
-		//List<Client> infoResa = new ArrayList<Client>();
-		//infoResa.add(newClient);
+		
+		ReservationManager.getInstance().addInfo(newClient);
 		
 		
 		request.setAttribute("client", newClient);

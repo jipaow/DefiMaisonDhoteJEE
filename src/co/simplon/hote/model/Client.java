@@ -1,4 +1,4 @@
-package co.simplon.hote.exercie2;
+package co.simplon.hote.model;
 
 public interface Client {
 	public String getNom();

@@ -1,4 +1,4 @@
-package co.simplon.hote.exercie2;
+package co.simplon.hote.model;
 
 public class ClientImpl implements Client {
 	String nom;
