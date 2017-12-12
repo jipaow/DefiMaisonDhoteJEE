@@ -35,10 +35,8 @@ public class Accueil extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-      //request.setAttribute("infoResa", ReservationManager.getInstance().getInfoResa().get(0));
-       
-		
-//		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+        request.setAttribute("manager", ReservationManager.getInstance());
+		getServletContext().getRequestDispatcher("/administrateur.jsp").forward(request, response);
 	}
 
 	
@@ -73,7 +71,7 @@ public class Accueil extends HttpServlet {
 		
 		
 		request.setAttribute("client", newClient);
-		getServletContext().getRequestDispatcher("/admin.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/recap.jsp").forward(request, response);
 		
 		
 
