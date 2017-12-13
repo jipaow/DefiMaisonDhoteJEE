@@ -15,13 +15,13 @@ public class ClientImpl implements Client {
 
 	@Override
 	public String getNom() {
-		// TODO Auto-generated method stub
+		
 		return nom;
 	}
 
 	@Override
 	public void setNom(String nom) {
-		// TODO Auto-generated method stub
+		
 		this.nom = nom;
 
 	}

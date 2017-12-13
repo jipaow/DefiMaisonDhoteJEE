@@ -5,24 +5,24 @@ import java.util.ArrayList;
 
 public class ReservationManager {
 	private final static ReservationManager INSTANCE = new ReservationManager();
-	private ArrayList<ClientImpl>infoResa = new ArrayList<ClientImpl>();
+	private ArrayList<Client>infoResa = new ArrayList<Client>();
 	
 	private ReservationManager() {
 	}
 
-	public ArrayList<ClientImpl> getInfoResa() {
+	public ArrayList<Client> getInfoResa() {
 		return infoResa;
 	}
 
-	public void setInfoResa(ArrayList<ClientImpl> infoResa) {
+	public void setInfoResa(ArrayList<Client> infoResa) {
 		this.infoResa = infoResa;
 	}
 
 	public static ReservationManager getInstance() {
 		return INSTANCE;
 	}
-	
-	 public void addInfo (ClientImpl client){
+	//--methode pour ajouter les reservations à la liste
+	 public void addInfo (Client client){
 		 infoResa.add(client);
 		 
 		 

@@ -2,6 +2,7 @@ package co.simplon.hote.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.simplon.hote.jdbc.jdbcTest;
 import co.simplon.hote.model.Client;
 import co.simplon.hote.model.ClientImpl;
 import co.simplon.hote.model.ReservationManager;
-
-
-
 
 
 /**
@@ -29,19 +28,20 @@ public class Accueil extends HttpServlet {
    
     public Accueil() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	
+		//---Envoi des reservations vers la page administrateur--
         request.setAttribute("manager", ReservationManager.getInstance());
 		getServletContext().getRequestDispatcher("/administrateur.jsp").forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nom = request.getParameter("nom");
+	    String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String mail = request.getParameter("mail");
 		String tel = request.getParameter("tel");
@@ -53,24 +53,31 @@ public class Accueil extends HttpServlet {
 		String nuit = request.getParameter("nuit");
 		String nbreDeVisiteur = request.getParameter("nbreDeVisiteur");
 		
-		ClientImpl newClient = new ClientImpl();
-		newClient.setNom(nom);
-		newClient.setPrenom(prenom);
-		newClient.setEmail(mail);
-		newClient.setTel(tel);
-		newClient.setParking(parking);
-		newClient.setAnimal(animal);
-		newClient.setFumeur(fumeur);
-		newClient.setPtiDej(ptiDej);
-		newClient.setSejour(sejour);
-		newClient.setNuit(nuit);
-		newClient.setNbreDeVisiteur(nbreDeVisiteur);
+		try {
+			jdbcTest.insertData(nom,prenom,tel,mail);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//-- creation de l'objet "client" contient toutes les infos de reservations
+//		Client newClient = new ClientImpl();
+//		newClient.setNom(nom);
+//		newClient.setPrenom(prenom);
+//		newClient.setEmail(mail);
+//		newClient.setTel(tel);
+//		newClient.setParking(parking);
+//		newClient.setAnimal(animal);
+//		newClient.setFumeur(fumeur);
+//		newClient.setPtiDej(ptiDej);
+//		newClient.setSejour(sejour);
+//		newClient.setNuit(nuit);
+//		newClient.setNbreDeVisiteur(nbreDeVisiteur);
+//		
+//		//--ajout à la liste des reservations
+//		ReservationManager.getInstance().addInfo(newClient);
 		
-		
-		ReservationManager.getInstance().addInfo(newClient);
-		
-		
-		request.setAttribute("client", newClient);
+		//--redirection de la reservation vers une page recap pour le client
+//		request.setAttribute("client", newClient);
 		getServletContext().getRequestDispatcher("/recap.jsp").forward(request, response);
 		
 		
