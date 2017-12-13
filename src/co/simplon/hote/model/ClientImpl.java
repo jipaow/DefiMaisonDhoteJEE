@@ -40,13 +40,13 @@ public class ClientImpl implements Client {
 	}
 
 	@Override
-	public String getEmail() {
+	public String getmail() {
 		// TODO Auto-generated method stub
 		return mail;
 	}
 
 	@Override
-	public void setEmail(String mail) {
+	public void setmail(String mail) {
 		// TODO Auto-generated method stub
 		this.mail=mail;
 

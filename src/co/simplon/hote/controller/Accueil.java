@@ -43,8 +43,8 @@ public class Accueil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
-		String mail = request.getParameter("mail");
 		String tel = request.getParameter("tel");
+		String mail = request.getParameter("mail");
 		String parking = request.getParameter("parking");
 		String animal = request.getParameter("animal");
 		String fumeur = request.getParameter("fumeur");
@@ -53,12 +53,25 @@ public class Accueil extends HttpServlet {
 		String nuit = request.getParameter("nuit");
 		String nbreDeVisiteur = request.getParameter("nbreDeVisiteur");
 		
+		jdbcTest db = new jdbcTest();
 		try {
-			jdbcTest.insertData(nom,prenom,tel,mail);
-		} catch (ClassNotFoundException | SQLException e) {
+			db.connectToDB();
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	
+		try {
+			db.insertData(nom,prenom,tel,mail,parking,animal,fumeur,ptiDej,sejour,nuit,nbreDeVisiteur);
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
+		
+		
+	
+		
+		db.close();
 		//-- creation de l'objet "client" contient toutes les infos de reservations
 //		Client newClient = new ClientImpl();
 //		newClient.setNom(nom);
@@ -83,7 +96,7 @@ public class Accueil extends HttpServlet {
 		
 
 		
-		doGet(request, response);
+	
 	}
 
 

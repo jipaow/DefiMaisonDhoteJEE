@@ -7,7 +7,8 @@ public class MainTest {
 		jdbcTest db = new jdbcTest();
 		
 		db.connectToDB();
-		db.insertData("jojo", "pren", "098876544E", "mail.com");
+		//db.insertData("jojo", "pren", "098876544E", "mail.com");
+		//db.readData();
 		db.close();
 		
 		

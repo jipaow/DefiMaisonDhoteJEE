@@ -7,8 +7,8 @@ public interface Client {
 	public String getPrenom();
 	public void setPrenom(String prenom);
 	
-	public String getEmail();
-	public void setEmail(String mail);
+	public String getmail();
+	public void setmail(String mail);
 	
 	public String getTel();
 	public void setTel(String tel);
