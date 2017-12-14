@@ -53,6 +53,8 @@ public class Accueil extends HttpServlet {
 		String nuit = request.getParameter("nuit");
 		String nbreDeVisiteur = request.getParameter("nbreDeVisiteur");
 		
+	
+		
 		jdbcTest db = new jdbcTest();
 		try {
 			db.connectToDB();
@@ -67,7 +69,20 @@ public class Accueil extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+//		try {
+//			db.readData();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		try {
+			request.setAttribute("reservation", db.readData());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		getServletContext().getRequestDispatcher("/recap.jsp").forward(request, response);
 		
 	
 		
@@ -86,20 +101,13 @@ public class Accueil extends HttpServlet {
 //		newClient.setNuit(nuit);
 //		newClient.setNbreDeVisiteur(nbreDeVisiteur);
 //		
-//		//--ajout à la liste des reservations
-//		ReservationManager.getInstance().addInfo(newClient);
+//		--ajout à la liste des reservations
+//	    ReservationManager.getInstance().addInfo();
 		
 		//--redirection de la reservation vers une page recap pour le client
 //		request.setAttribute("client", newClient);
-		getServletContext().getRequestDispatcher("/recap.jsp").forward(request, response);
+//		getServletContext().getRequestDispatcher("/recap.jsp").forward(request, response);
 		
-		
-
-		
-	
 	}
-
-
-	
 
 }

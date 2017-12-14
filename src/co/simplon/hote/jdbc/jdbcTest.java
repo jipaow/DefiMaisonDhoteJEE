@@ -62,7 +62,7 @@ public class jdbcTest {
 		Statement statement = null;
 		try {
 		statement = connection.createStatement();
-		String sql = "INSERT INTO reservationhote (nom, prenom, tel, mail, parking, animal, fumeur, ptidej, sejour, nuit, nbredevisiteurs) VALUES ('"+nom+"' , '"+prenom+"','"+tel+"','"+mail+"','"+parking+"','"+animal+"','"+fumeur+"','"+ptiDej+"','"+sejour+"','"+nuit+"','"+nbreDeVisiteur+"')";
+		String sql = "INSERT INTO reservationhote (nom, prenom, tel, mail, parking, animal, fumeur, pitdej, sejour, nuit, nbredevisiteurs) VALUES ('"+nom+"' , '"+prenom+"','"+tel+"','"+mail+"','"+parking+"','"+animal+"','"+fumeur+"','"+ptiDej+"','"+sejour+"','"+nuit+"','"+nbreDeVisiteur+"')";
 		//String sql = "INSERT INTO `reservationhote` (`nom`, `prenom`,`tel`,`mail`,`parking`,`animal`,`fumeur`,`ptidej`,`sejour`,`nuit`,`nbredevisiteurs`) VALUES ('" + nom + "', '" + prenom + "','" + tel + "','" + mail + "', '"+ parking +"','"+ animal +"','"+ fumeur +"','"+ ptiDej +"','" + sejour + "','"+ nuit +"','"+ nbreDeVisiteur +"')";
 		statement.executeUpdate(sql);
 		}
@@ -78,7 +78,7 @@ public class jdbcTest {
 		
 	}
 	
-	public static ArrayList<Client>readData() throws SQLException
+	public static ArrayList<Client> readData() throws SQLException
 	{
 		Statement statement = null;
 		ResultSet rs = null;
@@ -103,7 +103,7 @@ public class jdbcTest {
 			clientInfo.setParking(rs.getString("parking"));
 			clientInfo.setAnimal(rs.getString("animal"));
 			clientInfo.setFumeur(rs.getString("fumeur"));
-			clientInfo.setPtiDej(rs.getString("ptidej"));
+			clientInfo.setPtiDej(rs.getString("pitdej"));
 			clientInfo.setSejour(rs.getString("sejour"));
 			clientInfo.setNuit(rs.getString("nuit"));
 			clientInfo.setNbreDeVisiteur(rs.getString("nbredevisiteurs"));
