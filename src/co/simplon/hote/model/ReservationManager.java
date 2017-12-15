@@ -25,7 +25,7 @@ public class ReservationManager {
 	 public void addInfo (Client client){
 		 infoResa.add(client);
 		 
-		 
+	 
 	 }
 	
 	

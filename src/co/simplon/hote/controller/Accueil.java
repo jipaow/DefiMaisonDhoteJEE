@@ -24,7 +24,8 @@ import co.simplon.hote.model.ReservationManager;
 @WebServlet("/Accueil")
 public class Accueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private ArrayList<Client> listReserv;
+	jdbcTest db = new jdbcTest();  
    
     public Accueil() {
         super();
@@ -35,7 +36,27 @@ public class Accueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		//---Envoi des reservations vers la page administrateur--
-        request.setAttribute("manager", ReservationManager.getInstance());
+		try {
+			db.connectToDB();
+			System.out.println("connection ok");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		   try {
+				listReserv = db.readData();
+				request.setAttribute("infoResa", listReserv);
+				System.out.println("readData ok");
+			} catch (SQLException e) {
+		     // TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+		   
+		   db.close();
+	
+		
+        //request.setAttribute("manager", ReservationManager.getInstance());
 		getServletContext().getRequestDispatcher("/administrateur.jsp").forward(request, response);
 	}
 
@@ -53,9 +74,28 @@ public class Accueil extends HttpServlet {
 		String nuit = request.getParameter("nuit");
 		String nbreDeVisiteur = request.getParameter("nbreDeVisiteur");
 		
+		//-- creation de l'objet "client" contient toutes les infos de reservations
+				Client newClient = new ClientImpl();
+				newClient.setNom(nom);
+				newClient.setPrenom(prenom);
+		    	newClient.setmail(mail);
+				newClient.setTel(tel);
+				newClient.setParking(parking);
+				newClient.setAnimal(animal);
+		    	newClient.setFumeur(fumeur);
+				newClient.setPtiDej(ptiDej);
+		    	newClient.setSejour(sejour);
+				newClient.setNuit(nuit);
+				newClient.setNbreDeVisiteur(nbreDeVisiteur);
+				
+				//ReservationManager.getInstance().addInfo(newClient);
+				
+				//--redirection de la reservation vers une page recap pour le client
+				request.setAttribute("client", newClient);
+			    getServletContext().getRequestDispatcher("/recap.jsp").forward(request, response);
 	
 		
-		jdbcTest db = new jdbcTest();
+		
 		try {
 			db.connectToDB();
 		} catch (Exception e1) {
@@ -69,44 +109,22 @@ public class Accueil extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-//		try {
-//			db.readData();
+//	    try {
+//			infoResa = db.readData();
+//			request.setAttribute("reservation", infoResa);
 //		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
+//	     // TODO Auto-generated catch block
+//		e.printStackTrace();
 //		}
-		try {
-			request.setAttribute("reservation", db.readData());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		getServletContext().getRequestDispatcher("/recap.jsp").forward(request, response);
-		
-	
+	    
+		//request.setAttribute("reservation", ReservationManager.getInstance());
+		//getServletContext().getRequestDispatcher("/recap.jsp").forward(request, response);
 		
 		db.close();
-		//-- creation de l'objet "client" contient toutes les infos de reservations
-//		Client newClient = new ClientImpl();
-//		newClient.setNom(nom);
-//		newClient.setPrenom(prenom);
-//		newClient.setEmail(mail);
-//		newClient.setTel(tel);
-//		newClient.setParking(parking);
-//		newClient.setAnimal(animal);
-//		newClient.setFumeur(fumeur);
-//		newClient.setPtiDej(ptiDej);
-//		newClient.setSejour(sejour);
-//		newClient.setNuit(nuit);
-//		newClient.setNbreDeVisiteur(nbreDeVisiteur);
-//		
-//		--ajout à la liste des reservations
-//	    ReservationManager.getInstance().addInfo();
 		
-		//--redirection de la reservation vers une page recap pour le client
-//		request.setAttribute("client", newClient);
-//		getServletContext().getRequestDispatcher("/recap.jsp").forward(request, response);
+	
+//	--ajout à la liste des reservations
+	    //ReservationManager.getInstance().addInfo(newClient);
 		
 	}
 
