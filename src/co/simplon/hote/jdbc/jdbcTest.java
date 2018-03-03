@@ -14,7 +14,7 @@ import co.simplon.hote.model.ClientImpl;
 
 public class jdbcTest {
 	private final static String BDPATH = "jdbc:mysql://localhost:3306/maisonhotedb";
-	private final static String DBUSER = "admin";
+	private final static String DBUSER = "root";
 	private final static String DBPASSWORD = "admin";
 	
 	private static Connection connection;
@@ -64,7 +64,7 @@ public class jdbcTest {
 		statement = connection.createStatement();
 		String sql = "INSERT INTO reservationhote (nom, prenom, tel, mail, parking, animal, fumeur, pitdej, sejour, nuit, nbredevisiteurs) VALUES ('"+nom+"' , '"+prenom+"','"+tel+"','"+mail+"','"+parking+"','"+animal+"','"+fumeur+"','"+ptiDej+"','"+sejour+"','"+nuit+"','"+nbreDeVisiteur+"')";
 		//String sql = "INSERT INTO `reservationhote` (`nom`, `prenom`,`tel`,`mail`,`parking`,`animal`,`fumeur`,`ptidej`,`sejour`,`nuit`,`nbredevisiteurs`) VALUES ('" + nom + "', '" + prenom + "','" + tel + "','" + mail + "', '"+ parking +"','"+ animal +"','"+ fumeur +"','"+ ptiDej +"','" + sejour + "','"+ nuit +"','"+ nbreDeVisiteur +"')";
-		statement.executeUpdate(sql);
+		statement.execute(sql);
 		}
 		catch(SQLException e){
 			System.out.println("error insert new data");
@@ -96,6 +96,7 @@ public class jdbcTest {
 			// Loop on the results extracted from the database
 			
 			while (rs.next()) {
+			clientInfo = new ClientImpl();
 			clientInfo.setNom(rs.getString("nom"));
 			clientInfo.setPrenom(rs.getString("prenom"));
 			clientInfo.setTel(rs.getString("tel"));

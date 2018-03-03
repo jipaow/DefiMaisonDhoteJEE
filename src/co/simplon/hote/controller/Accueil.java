@@ -1,11 +1,8 @@
 package co.simplon.hote.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import co.simplon.hote.jdbc.jdbcTest;
 import co.simplon.hote.model.Client;
 import co.simplon.hote.model.ClientImpl;
-import co.simplon.hote.model.ReservationManager;
 
 
 /**
@@ -45,7 +41,7 @@ public class Accueil extends HttpServlet {
 		}
 		
 		   try {
-				listReserv = db.readData();
+				listReserv = jdbcTest.readData();
 				request.setAttribute("infoResa", listReserv);
 				System.out.println("readData ok");
 			} catch (SQLException e) {
@@ -104,7 +100,7 @@ public class Accueil extends HttpServlet {
 		}
 	
 		try {
-			db.insertData(nom,prenom,tel,mail,parking,animal,fumeur,ptiDej,sejour,nuit,nbreDeVisiteur);
+			jdbcTest.insertData(nom,prenom,tel,mail,parking,animal,fumeur,ptiDej,sejour,nuit,nbreDeVisiteur);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -123,8 +119,8 @@ public class Accueil extends HttpServlet {
 		db.close();
 		
 	
-//	--ajout à la liste des reservations
-	    //ReservationManager.getInstance().addInfo(newClient);
+	   //--ajout à la liste des reservations
+	   // ReservationManager.getInstance().addInfo(newClient);
 		
 	}
 
