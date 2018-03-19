@@ -21,7 +21,8 @@ import co.simplon.hote.model.ClientImpl;
 public class Accueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Client> listReserv;
-	jdbcTest db = new jdbcTest();  
+	jdbcTest db = new jdbcTest();
+	private ReservationManager manager = new ReservationManager();
    
     public Accueil() {
         super();
@@ -51,7 +52,7 @@ public class Accueil extends HttpServlet {
 		   
 		   db.close();
 	
-		
+		//l'acces à la recap se fait par un lien en bas de la page de reservation
         //request.setAttribute("manager", ReservationManager.getInstance());
 		getServletContext().getRequestDispatcher("/administrateur.jsp").forward(request, response);
 	}
@@ -120,7 +121,7 @@ public class Accueil extends HttpServlet {
 		
 	
 	   //--ajout à la liste des reservations
-	   // ReservationManager.getInstance().addInfo(newClient);
+	   manager.addInfo(newClient);
 		
 	}
 

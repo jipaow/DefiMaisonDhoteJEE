@@ -64,7 +64,7 @@ public class jdbcTest {
 		statement = connection.createStatement();
 		String sql = "INSERT INTO reservationhote (nom, prenom, tel, mail, parking, animal, fumeur, pitdej, sejour, nuit, nbredevisiteurs) VALUES ('"+nom+"' , '"+prenom+"','"+tel+"','"+mail+"','"+parking+"','"+animal+"','"+fumeur+"','"+ptiDej+"','"+sejour+"','"+nuit+"','"+nbreDeVisiteur+"')";
 		//String sql = "INSERT INTO `reservationhote` (`nom`, `prenom`,`tel`,`mail`,`parking`,`animal`,`fumeur`,`ptidej`,`sejour`,`nuit`,`nbredevisiteurs`) VALUES ('" + nom + "', '" + prenom + "','" + tel + "','" + mail + "', '"+ parking +"','"+ animal +"','"+ fumeur +"','"+ ptiDej +"','" + sejour + "','"+ nuit +"','"+ nbreDeVisiteur +"')";
-		statement.execute(sql);
+		statement.executeUpdate(sql);
 		}
 		catch(SQLException e){
 			System.out.println("error insert new data");
