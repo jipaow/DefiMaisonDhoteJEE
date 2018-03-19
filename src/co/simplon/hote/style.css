@@ -1,0 +1,8 @@
+.background{
+
+     background-image: url("contenu/font_ciel_bleu.jpg");
+     background-size: cover; 
+}
+h4.titre{
+    text-align: center;
+}

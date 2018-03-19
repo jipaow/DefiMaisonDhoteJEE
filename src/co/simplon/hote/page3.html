@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen" />
+  <link type="text/css" rel="stylesheet" href="style.css" media="screen" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta charset="utf-8" />
+  <title>Maison d'hôtes en PACA</title>
+</head>
+
+<body class="background">
+
+  <!--barre de navigation-->
+  <header>
+    <nav>
+      <div class="nav-wrapper light blue z-depth-4">
+        <a href="index.html" class="brand-logo center">
+          <img src="contenu/logo.png" alt="logo">
+        </a>
+
+        <a href="#" data-activates="mobile-menu" class="button-collapse">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="left hide-on-med-and-down">
+          <li>
+            <a href="index.html">Accueil</a>
+          </li>
+          <li>
+            <a href="page2.html">Decouvrez notre region</a>
+          </li>
+          <li>
+            <a href="page3.html">Reservation</a>
+          </li>
+        </ul>
+
+        <ul class="side-nav background" id="mobile-menu">
+          <li>
+            <a href="index.html">Accueil</a>
+          </li>
+          <li>
+            <a href="page2.html">Decouvrez notre region</a>
+          </li>
+          <li>
+            <a href="page3.html">Reservation</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!--champs à remplir-->
+  <section class="container white bordure">
+    <h4 class="titre">Réservation en ligne</h4>
+    <form class="col s12" action="Accueil" method="post">
+      <fieldset>
+        <legend>Coordonnées</legend>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">account_circle</i>
+            <input name="nom" id="icon_prefix" type="text" class="validate" pattern="^[A-Za-z]+$" required>
+            <label for="icon_prefix" style="color:black">Nom</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">account_circle</i>
+            <input name="prenom" type="text" class="validate">
+            <label for="icon_prefix" style="color:black">Prenom</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">email</i>
+            <input name="mail" id="email" type="text" class="validate" required>
+            <label for="icon_telephone" style="color:black">Adresse mail</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <i class="material-icons prefix">phone</i>
+            <input name="tel" id="icon_telephone" type="text" class="validate" required>
+            <label for="icon_telephone" style="color:black">Telephone</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!--options checkbox-->
+
+      <fieldset>
+        <legend>Options</legend>
+        <div class="row">
+          <div class="col s12 m6 padding 2em">
+            <p>
+              <input type="checkbox" class="filled-in" id="parking" name="parking" />
+              <label for="parking" style="color:black">Parking</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="animal" name="animal" />
+              <label for="animal" style="color:black">Animaux</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="fumeur" name="fumeur" />
+              <label for="fumeur" style="color:black">fumeur</label>
+            </p>
+            <p>
+              <input type="checkbox" class="filled-in" id="ptiDej" name="ptiDej" />
+              <label for="ptiDej" style="color:black">petit dejeuner</label>
+            </p>
+          </div>
+        </div>
+      </fieldset>
+
+
+
+      <!--options radio button-->
+      <fieldset>
+        <legend>Type de séjour</legend>
+        <div class="col S12 m6">
+          <p>
+            <input name="sejour" type="radio" id="loisir" value="loisir" />
+            <label for="loisir" style="color:black">Séjour loisir</label>
+          </p>
+          <p>
+            <input name="sejour" type="radio" id="pro" value="professionnelle" />
+            <label for="pro" style="color:black"> Séjour professionnel</label>
+          </p>
+        </div>
+        
+      </fieldset>
+
+
+      <!--Combobox nombre de nuits , nombre de personnes, region d'origine-->
+      <fieldset>
+        <legend>Durée et nombre de personnes</legend>
+        <div class="input-field col s12">
+          <select id="nbNuit" name="nuit">
+            <option value="" disabled selected>Choisissez votre nombre de nuits</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <label>Nombre de personnes</label>
+        </div>
+        <div class="input-field col s12">
+          <select id="nbVisiteurs" name="nbreDeVisiteur">
+            <option value="" disabled selected>Choisissez votre nombre de personnes</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <label>Nombre de nuits</label>
+        </div>
+
+        <div class="input-field col s12">
+          <select name="region">
+            <option disabled selected>Selectionnez votre region d'origine</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="Dom Tom">DOM TOM</option>
+          </select>
+          <label>region d'origine</label>
+        </div>
+      </fieldset>
+
+      <br>
+
+
+      <!--Boutons estimation et validez-->
+
+      <div class="col s12 m6">
+        <button class="btn waves-effect waves-light blue lighten-1" type="submit" name="action" id="validez">Validez
+          <i class="material-icons right">send</i>
+        </button>
+        <br>
+        <br>
+      </div>
+    </form>
+
+    <div class="row">
+      <div class="col s12 m6">
+        <button class="btn waves-effect waves-light blue lighten-1" type="button" name="action" id="estimation">Estimation du prix</button>
+        <br>
+        <div id="estimate"></div>
+      </div>
+      <br>
+
+
+
+    </div>
+    <!-- lien vers la page la servlet qui renvoi à la page administrateur -->
+    <div>
+      <a href="Accueil">reservations enregistrés</a>
+    </div>
+
+  </section>
+
+
+
+
+  <!--bouton de retour en haut de page-->
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light blue darken-2" href="#top">
+      <i class="material-icons">arrow_upward</i>
+    </a>
+  </div>
+
+
+  <!--footer-->
+  <footer class="page-footer blue z-depth-4 ">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="black-text">Mas responsive design en provence</h5>
+          <p class="black-text ">22 aveune des accacias
+            <br>06600 Antibes</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Liens</h5>
+          <ul>
+            <li>
+              <a class="grey-text text-lighten-3" href="https://fr-fr.facebook.com/">facebook</a>
+              <img src="contenu/facebook.png" alt="logo facebook" />
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="https://twitter.com">twitter</a>
+              <img src="contenu/twitter_logo.svg.png" alt="logo twitter" />
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="mailto:MasProvencal@blabla.com">contactez nous par mail</a>
+              <i class="material-icons font-size:24px">email</i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright black-text">
+      <div class="container">
+        © 2017 Copyright Text
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!--Import jQuery before materialize.js-->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script>
+    src = "js/init.js"
+  </script>
+  <script>
+    jQuery(document).ready(function ($) {
+      $(".button-collapse").sideNav();
+    });
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('select').material_select();
+    });
+  </script>
+  <script>
+    $('select').material_select('destroy');
+  </script>
+
+  <script>
+    var element = document.getElementById('estimation');
+    element.addEventListener('click', estimated);
+
+    function estimated() {
+      var nuit = document.getElementById("nbNuit").value;
+      var visiteurs = document.getElementById("nbVisiteurs").value;
+      var resultat = nuit * 100;
+      var esti = document.getElementById("estimate");
+      esti.innerHTML = "Estimation :" + resultat + " €";
+
+    }
+  </script>
+
+
+</body>
+
+</html>
